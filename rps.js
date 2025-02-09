@@ -11,6 +11,13 @@ function getComputerChoice() {
     }
 }
 
+function getHumanChoice() {
+    let play = prompt("Play 'rock'|'paper'|'scissors': ")
+    return play;
+}
+
 for (let i = 0; i < 10; ++i) {
     console.log(getComputerChoice())
 }
+
+getHumanChoice()
