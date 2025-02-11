@@ -11,15 +11,6 @@ function getComputerChoice() {
     }
 }
 
-function getHumanChoice() {
-    let play = "";
-    while (play !== "rock" && play !== "paper" && play !== "scissors") {
-        play = prompt("Play 'rock'|'paper'|'scissors'")
-        play = play.toLowerCase()
-    }
-    return play;
-}
-
 function playRound(humanChoice, computerChoice) {
     let outcome = 0 // 0: Lose, 1: Win, 2: Draw
     if (humanChoice === "rock") {
@@ -62,18 +53,9 @@ function playRound(humanChoice, computerChoice) {
     return outcome
 }
 
+
+
 let humanScore = 0
 let computerScore = 0
-
-for (let i = 1; i <= 5; ++i) {
-    console.log(`Round ${i}:`)
-    let result = playRound(getHumanChoice(), getComputerChoice())
-    if (result === 0) {
-        ++computerScore
-    }
-    else if (result === 1) {
-        ++humanScore
-    }
-}
 
 console.log(`Final Scores:\n Player: ${humanScore}\n Computer: ${computerScore}`)
