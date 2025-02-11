@@ -11,13 +11,16 @@ function getComputerChoice() {
     }
 }
 
-let humanScore = 0
-let computerScore = 0
+let playerScore = 0;
+let computerScore = 0;
+let roundNumber = 1;
 
+const statusText = document.querySelector('.status');
 const resultText = document.querySelector('.result');
 const scoreText = document.querySelector('.score');
 
 function playRound(event) {
+    statusText.textContent = "Round " + ++roundNumber;
     let playerChoice = event.target.id;
     let computerChoice = getComputerChoice();
     let outcome = 0; // 0: lose, 1: win, 2: draw
@@ -62,4 +65,16 @@ function playRound(event) {
             resultText.textContent = "Draw!";
     }
     scoreText.textContent = `Player: ${playerScore} | Computer: ${computerScore}`;
+
+    if (playerScore >= 5 || computerScore >= 5) {
+        statusText.textContent = (playerScore > computerScore) ? "YOU WIN!" : "YOU LOSE!";
+        playerScore = 0;
+        computerScore = 0;
+        roundNumber = 1;
+    }
 }
+
+const buttons = document.querySelectorAll('.buttons');
+buttons.forEach((button) => {
+    button.addEventListener("click", playRound);
+});
